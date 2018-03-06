@@ -18,6 +18,9 @@
 		5D618425204E2ECF0083743C /* MVVMDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618424204E2ECF0083743C /* MVVMDemoUITests.m */; };
 		5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618445204E55000083743C /* DelegateDemoViewController.m */; };
 		5D618449204E69B40083743C /* DelegateRedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618448204E69B40083743C /* DelegateRedView.m */; };
+		5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D61844B204E7F1E0083743C /* KVODemoViewController.m */; };
+		5D618450204E7FB00083743C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D61844F204E7FB00083743C /* Person.m */; };
+		5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618452204E821E0083743C /* ControllerEventDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,12 @@
 		5D618445204E55000083743C /* DelegateDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DelegateDemoViewController.m; sourceTree = "<group>"; };
 		5D618447204E69B40083743C /* DelegateRedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateRedView.h; sourceTree = "<group>"; };
 		5D618448204E69B40083743C /* DelegateRedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DelegateRedView.m; sourceTree = "<group>"; };
+		5D61844A204E7F1E0083743C /* KVODemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVODemoViewController.h; sourceTree = "<group>"; };
+		5D61844B204E7F1E0083743C /* KVODemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVODemoViewController.m; sourceTree = "<group>"; };
+		5D61844E204E7FB00083743C /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		5D61844F204E7FB00083743C /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		5D618451204E821E0083743C /* ControllerEventDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControllerEventDemoViewController.h; sourceTree = "<group>"; };
+		5D618452204E821E0083743C /* ControllerEventDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControllerEventDemoViewController.m; sourceTree = "<group>"; };
 		BB0E3044003FDF48089C7BE9 /* Pods-MVVMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF009B83695C6B4C3F8AD56 /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE40A3419A4793773356722 /* Pods-MVVMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +172,10 @@
 				5D618404204E2ECF0083743C /* MainViewController.m */,
 				5D618444204E55000083743C /* DelegateDemoViewController.h */,
 				5D618445204E55000083743C /* DelegateDemoViewController.m */,
+				5D61844A204E7F1E0083743C /* KVODemoViewController.h */,
+				5D61844B204E7F1E0083743C /* KVODemoViewController.m */,
+				5D618451204E821E0083743C /* ControllerEventDemoViewController.h */,
+				5D618452204E821E0083743C /* ControllerEventDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +183,8 @@
 		5D618441204E43370083743C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5D61844E204E7FB00083743C /* Person.h */,
+				5D61844F204E7FB00083743C /* Person.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,8 +407,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */,
 				5D618405204E2ECF0083743C /* MainViewController.m in Sources */,
 				5D618449204E69B40083743C /* DelegateRedView.m in Sources */,
+				5D618450204E7FB00083743C /* Person.m in Sources */,
+				5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */,
 				5D618410204E2ECF0083743C /* main.m in Sources */,
 				5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */,
 				5D618402204E2ECF0083743C /* AppDelegate.m in Sources */,

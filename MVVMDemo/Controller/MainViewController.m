@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import <Masonry/Masonry.h>
 #import "DelegateDemoViewController.h"
+#import "KVODemoViewController.h"
+#import "ControllerEventDemoViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) UITableView *tableView;
@@ -38,8 +40,20 @@ static NSString * const cellID = @"cellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = self.listTitleArray[indexPath.row];
-    if ([title isEqualToString:@"代理demo"]) {
+    if ([title isEqualToString:@"代理 demo"]) {
         DelegateDemoViewController *vc = [[DelegateDemoViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if ([title isEqualToString:@"KVO demo"]) {
+        KVODemoViewController *vc = [[KVODemoViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if ([title isEqualToString:@"事件监听 demo"]) {
+        ControllerEventDemoViewController *vc = [[ControllerEventDemoViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -78,7 +92,9 @@ static NSString * const cellID = @"cellID";
 #pragma mark - Getters and Setters
 - (NSArray *)listTitleArray {
     if (!_listTitleArray) {
-        _listTitleArray = @[@"代理demo"];
+        _listTitleArray = @[@"代理 demo",
+                            @"KVO demo",
+                            @"事件监听 demo"];
     }
     
     return _listTitleArray;
