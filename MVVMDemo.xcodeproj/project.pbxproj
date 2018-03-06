@@ -17,6 +17,7 @@
 		5D61841A204E2ECF0083743C /* MVVMDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618419204E2ECF0083743C /* MVVMDemoTests.m */; };
 		5D618425204E2ECF0083743C /* MVVMDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618424204E2ECF0083743C /* MVVMDemoUITests.m */; };
 		5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618445204E55000083743C /* DelegateDemoViewController.m */; };
+		5D618449204E69B40083743C /* DelegateRedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618448204E69B40083743C /* DelegateRedView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		5D618426204E2ECF0083743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D618444204E55000083743C /* DelegateDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateDemoViewController.h; sourceTree = "<group>"; };
 		5D618445204E55000083743C /* DelegateDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DelegateDemoViewController.m; sourceTree = "<group>"; };
+		5D618447204E69B40083743C /* DelegateRedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateRedView.h; sourceTree = "<group>"; };
+		5D618448204E69B40083743C /* DelegateRedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DelegateRedView.m; sourceTree = "<group>"; };
 		BB0E3044003FDF48089C7BE9 /* Pods-MVVMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF009B83695C6B4C3F8AD56 /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE40A3419A4793773356722 /* Pods-MVVMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 		5D618442204E433B0083743C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D618447204E69B40083743C /* DelegateRedView.h */,
+				5D618448204E69B40083743C /* DelegateRedView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D618405204E2ECF0083743C /* MainViewController.m in Sources */,
+				5D618449204E69B40083743C /* DelegateRedView.m in Sources */,
 				5D618410204E2ECF0083743C /* main.m in Sources */,
 				5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */,
 				5D618402204E2ECF0083743C /* AppDelegate.m in Sources */,
