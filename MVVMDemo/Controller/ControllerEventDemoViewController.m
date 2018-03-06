@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 
+static NSString * const testNotification = @"testNotification";
 
 @interface ControllerEventDemoViewController ()
 @property (strong, nonatomic) UIButton *demoButton;
@@ -20,6 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotify) name:testNotification object:nil];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:testNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        NSLog(@"RAC:receiveNotify");
+    }];
 }
 
 - (void)setupUI {
@@ -32,6 +37,7 @@
 //    [self.demoButton addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [[self.demoButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         NSLog(@"RAC clickBtn");
+        [[NSNotificationCenter defaultCenter] postNotificationName:testNotification object:nil];
     }];
     [self.view addSubview:self.demoButton];
     [self.demoButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,6 +49,10 @@
 
 - (void)clickBtn {
     NSLog(@"clickBtn");
+}
+
+- (void)receiveNotify {
+    NSLog(@"receiveNotify");
 }
 
 @end
