@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		41353384012F1C188E2B0C46 /* Pods_MVVMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF009B83695C6B4C3F8AD56 /* Pods_MVVMDemo.framework */; };
+		5D60D441204FBB6200668427 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D60D440204FBB6200668427 /* LoginViewController.m */; };
+		5D60D444204FBB7B00668427 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D60D443204FBB7B00668427 /* User.m */; };
+		5D60D447204FBB8C00668427 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D60D446204FBB8C00668427 /* LoginViewModel.m */; };
 		5D618402204E2ECF0083743C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618401204E2ECF0083743C /* AppDelegate.m */; };
 		5D618405204E2ECF0083743C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618404204E2ECF0083743C /* MainViewController.m */; };
 		5D618408204E2ECF0083743C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D618406204E2ECF0083743C /* Main.storyboard */; };
@@ -41,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D60D43F204FBB6200668427 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5D60D440204FBB6200668427 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5D60D442204FBB7B00668427 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		5D60D443204FBB7B00668427 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		5D60D445204FBB8C00668427 /* LoginViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		5D60D446204FBB8C00668427 /* LoginViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		5D6183FD204E2ECF0083743C /* MVVMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D618400204E2ECF0083743C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5D618401204E2ECF0083743C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -176,6 +185,8 @@
 				5D61844B204E7F1E0083743C /* KVODemoViewController.m */,
 				5D618451204E821E0083743C /* ControllerEventDemoViewController.h */,
 				5D618452204E821E0083743C /* ControllerEventDemoViewController.m */,
+				5D60D43F204FBB6200668427 /* LoginViewController.h */,
+				5D60D440204FBB6200668427 /* LoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +196,8 @@
 			children = (
 				5D61844E204E7FB00083743C /* Person.h */,
 				5D61844F204E7FB00083743C /* Person.m */,
+				5D60D442204FBB7B00668427 /* User.h */,
+				5D60D443204FBB7B00668427 /* User.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +214,8 @@
 		5D618443204E434D0083743C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5D60D445204FBB8C00668427 /* LoginViewModel.h */,
+				5D60D446204FBB8C00668427 /* LoginViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,11 +422,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D60D444204FBB7B00668427 /* User.m in Sources */,
 				5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */,
+				5D60D447204FBB8C00668427 /* LoginViewModel.m in Sources */,
 				5D618405204E2ECF0083743C /* MainViewController.m in Sources */,
 				5D618449204E69B40083743C /* DelegateRedView.m in Sources */,
 				5D618450204E7FB00083743C /* Person.m in Sources */,
 				5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */,
+				5D60D441204FBB6200668427 /* LoginViewController.m in Sources */,
 				5D618410204E2ECF0083743C /* main.m in Sources */,
 				5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */,
 				5D618402204E2ECF0083743C /* AppDelegate.m in Sources */,

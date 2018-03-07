@@ -11,6 +11,7 @@
 #import "DelegateDemoViewController.h"
 #import "KVODemoViewController.h"
 #import "ControllerEventDemoViewController.h"
+#import "LoginViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) UITableView *tableView;
@@ -40,8 +41,10 @@ static NSString * const cellID = @"cellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *vcStr = self.listTitleArray[indexPath.row][@"vc"];
+    NSString *titleStr = self.listTitleArray[indexPath.row][@"title"];
     if (vcStr) {
-        id vc = [[NSClassFromString(vcStr) alloc] init];
+        UIViewController *vc = [[NSClassFromString(vcStr) alloc] init];
+        vc.title = titleStr;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -81,16 +84,20 @@ static NSString * const cellID = @"cellID";
     if (!_listTitleArray) {
         _listTitleArray = @[
                             @{
-                                @"title" : @"代理Demo",
+                                @"title" : @"Delegate",
                                 @"vc" : @"DelegateDemoViewController"
                                 },
                             @{
-                                @"title" : @"KVODemo",
+                                @"title" : @"KVO",
                                 @"vc" : @"KVODemoViewController"
                                 },
                             @{
-                                @"title" : @"事件监听+通知Demo",
+                                @"title" : @"TargetAction+Notifications",
                                 @"vc" : @"ControllerEventDemoViewController"
+                                },
+                            @{
+                                @"title" : @"登录Demo",
+                                @"vc" : @"LoginViewController"
                                 }
                             ];
     }
