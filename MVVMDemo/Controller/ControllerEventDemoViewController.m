@@ -22,9 +22,16 @@ static NSString * const testNotification = @"testNotification";
     [super viewDidLoad];
     [self setupUI];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotify) name:testNotification object:nil];
+    @weakify(self);
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:testNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
         NSLog(@"RAC:receiveNotify");
+        @strongify(self);
+        self.view.backgroundColor = [UIColor yellowColor];
     }];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupUI {

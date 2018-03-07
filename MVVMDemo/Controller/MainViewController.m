@@ -34,27 +34,14 @@ static NSString * const cellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    cell.textLabel.text = self.listTitleArray[indexPath.row];
+    cell.textLabel.text = self.listTitleArray[indexPath.row][@"title"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *title = self.listTitleArray[indexPath.row];
-    if ([title isEqualToString:@"代理 demo"]) {
-        DelegateDemoViewController *vc = [[DelegateDemoViewController alloc] init];
-        vc.title = title;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    
-    if ([title isEqualToString:@"KVO demo"]) {
-        KVODemoViewController *vc = [[KVODemoViewController alloc] init];
-        vc.title = title;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    
-    if ([title isEqualToString:@"事件监听 demo"]) {
-        ControllerEventDemoViewController *vc = [[ControllerEventDemoViewController alloc] init];
-        vc.title = title;
+    NSString *vcStr = self.listTitleArray[indexPath.row][@"vc"];
+    if (vcStr) {
+        id vc = [[NSClassFromString(vcStr) alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -92,9 +79,20 @@ static NSString * const cellID = @"cellID";
 #pragma mark - Getters and Setters
 - (NSArray *)listTitleArray {
     if (!_listTitleArray) {
-        _listTitleArray = @[@"代理 demo",
-                            @"KVO demo",
-                            @"事件监听 demo"];
+        _listTitleArray = @[
+                            @{
+                                @"title" : @"代理Demo",
+                                @"vc" : @"DelegateDemoViewController"
+                                },
+                            @{
+                                @"title" : @"KVODemo",
+                                @"vc" : @"KVODemoViewController"
+                                },
+                            @{
+                                @"title" : @"事件监听+通知Demo",
+                                @"vc" : @"ControllerEventDemoViewController"
+                                }
+                            ];
     }
     
     return _listTitleArray;
