@@ -24,6 +24,7 @@
 		5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D61844B204E7F1E0083743C /* KVODemoViewController.m */; };
 		5D618450204E7FB00083743C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D61844F204E7FB00083743C /* Person.m */; };
 		5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618452204E821E0083743C /* ControllerEventDemoViewController.m */; };
+		5D6CAF57205117A70013D2FB /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CAF56205117A70013D2FB /* MainPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		5D61844F204E7FB00083743C /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		5D618451204E821E0083743C /* ControllerEventDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControllerEventDemoViewController.h; sourceTree = "<group>"; };
 		5D618452204E821E0083743C /* ControllerEventDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControllerEventDemoViewController.m; sourceTree = "<group>"; };
+		5D6CAF55205117A70013D2FB /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		5D6CAF56205117A70013D2FB /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		BB0E3044003FDF48089C7BE9 /* Pods-MVVMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF009B83695C6B4C3F8AD56 /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE40A3419A4793773356722 /* Pods-MVVMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				5D618452204E821E0083743C /* ControllerEventDemoViewController.m */,
 				5D60D43F204FBB6200668427 /* LoginViewController.h */,
 				5D60D440204FBB6200668427 /* LoginViewController.m */,
+				5D6CAF55205117A70013D2FB /* MainPageViewController.h */,
+				5D6CAF56205117A70013D2FB /* MainPageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -401,12 +406,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 			);
@@ -430,6 +437,7 @@
 				5D618450204E7FB00083743C /* Person.m in Sources */,
 				5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */,
 				5D60D441204FBB6200668427 /* LoginViewController.m in Sources */,
+				5D6CAF57205117A70013D2FB /* MainPageViewController.m in Sources */,
 				5D618410204E2ECF0083743C /* main.m in Sources */,
 				5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */,
 				5D618402204E2ECF0083743C /* AppDelegate.m in Sources */,

@@ -40,13 +40,13 @@
         if (self.password.length < 8 || self.password.length > 16) {
             return [RACSignal error:[NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"errorMsg":@"密码长度超出范围"}]];
         }
-        @weakify(self);
+//        @weakify(self);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            @weakify(self);
+//            @strongify(self);
+//            @weakify(self);
             /// 发起请求 模拟网络请求
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                @strongify(self);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                @strongify(self);
                 /// 登录成功 保存数据 简单起见 随便存了哈
                 /// 保存用户数据 这个逻辑就不要我来实现了吧 假数据参照 [AppDelegate sharedDelegate].account
                 /// 模拟成功或者失败
@@ -63,7 +63,33 @@
             return nil;
         }];
     }];
+}
+
+- (void)loginSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock {
+    if (self.phoneNumber.length < 11) {
+        failureBlock([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"errorMsg":@"请输入正确的手机号码"}]);
+        return;
+    }
+    if (self.password.length < 8 || self.password.length > 16) {
+        failureBlock([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"errorMsg":@"密码长度超出范围"}]);
+        return;
+    }
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //                @strongify(self);
+        /// 登录成功 保存数据 简单起见 随便存了哈
+        /// 保存用户数据 这个逻辑就不要我来实现了吧 假数据参照 [AppDelegate sharedDelegate].account
+        /// 模拟成功或者失败
+#if 1
+        successBlock(@{
+                       @"resultCode": @"000000",
+                       @"msg" : @"MVVM",
+                       });
+#else
+        /// 失败的回调 我就不处理 现实中开发绝逼不是这样的
+        failureBlock([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"errorMsg":@"服务器不给力"}]);
+#endif
+    });
     
 }
 

@@ -10,6 +10,8 @@
 #import "LoginViewModel.h"
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
+#import "MBProgressHUD.h"
+#import "MainPageViewController.h"
 
 @interface LoginViewController ()
 @property (strong, nonatomic) LoginViewModel *loginViewModel;
@@ -143,23 +145,53 @@
       doNext:^(id x) {
 //          @strongify(self);
           NSLog(@"doNext");
+          [MBProgressHUD showHUDAddedTo:self.view animated:YES];
       }]
      subscribeNext:^(UIButton *sender) {
          @strongify(self);
          NSLog(@"loginCommand");
-         [self.loginViewModel.loginCommand execute:nil];
+//         [self.loginViewModel.loginCommand execute:nil];
+         
+         @weakify(self);
+         [self.loginViewModel loginSuccess:^(id result) {
+             @strongify(self);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSLog(@"result:%@", result);
+             MainPageViewController *vc = [[MainPageViewController alloc] init];
+             vc.title = result[@"msg"];
+             [self.navigationController pushViewController:vc animated:YES];
+         } failuer:^(NSError *error) {
+             @strongify(self);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSString *errorMsg = error.userInfo[@"errorMsg"];
+             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+             [alertC addAction:action];
+             [self presentViewController:alertC animated:YES completion:nil];
+         }];
      }];
     
     //获取数据成功处理
-    [self.loginViewModel.loginCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    
-    //处理错误
-    [self.loginViewModel.loginCommand.errors subscribeNext:^(NSError * _Nullable x) {
-        NSLog(@"error:%@", x.userInfo[@"errorMsg"]);
-    }];
+//    [self.loginViewModel.loginCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+//        @strongify(self);
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        MainPageViewController *vc = [[MainPageViewController alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }];
+//
+//
+//    [[self.loginViewModel.loginCommand.errors doNext:^(NSError * _Nullable x) {
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//    }] subscribeNext:^(NSError * _Nullable x) {
+//        NSString *errorMsg = x.userInfo[@"errorMsg"];
+//        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
+//
+//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+//        [alertC addAction:action];
+//
+//        [self presentViewController:alertC animated:YES completion:nil];
+//    }];
 }
 
 @end

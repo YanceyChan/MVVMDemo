@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 
+typedef void(^successBlock)(id result);
+typedef void(^failureBlock)(NSError *error);
+
 @interface LoginViewModel : NSObject
 //手机号码
 @property (strong, nonatomic) NSString *phoneNumber;
@@ -19,4 +22,5 @@
 /// 登录按钮点击执行的命令
 @property (nonatomic, strong) RACCommand *loginCommand;
 
+- (void)loginSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock;
 @end
