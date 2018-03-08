@@ -24,7 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setupUI];
+    
     [self bindViewModel];
 }
 
@@ -131,10 +133,11 @@
     //绑定loginButton的enabled -> self.loginViewModel.validLoginSignal
     RAC(self.loginButton, enabled) = self.loginViewModel.validLoginSignal;
     
+    //当self.loginButton.enable改变时，背景颜色也改变
     [RACObserve(self.loginButton, enabled) subscribeNext:^(id  _Nullable x) {
         self.loginButton.backgroundColor = [x boolValue] ? [UIColor orangeColor] : [UIColor grayColor];
     }];
-    
+
     //action方法绑定
     [[[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside]
       doNext:^(id x) {
@@ -146,6 +149,17 @@
          NSLog(@"loginCommand");
          [self.loginViewModel.loginCommand execute:nil];
      }];
+    
+    //获取数据成功处理
+    [self.loginViewModel.loginCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    //处理错误
+    [self.loginViewModel.loginCommand.errors subscribeNext:^(NSError * _Nullable x) {
+        NSLog(@"error:%@", x.userInfo[@"errorMsg"]);
+    }];
 }
 
 @end
