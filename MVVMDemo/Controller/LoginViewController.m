@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [self bindViewModel];
 }
 
 - (void)setupUI {
@@ -113,6 +114,38 @@
         make.height.equalTo(@44);
     }];
     
+}
+
+- (void)bindViewModel {
+    self.loginViewModel = [[LoginViewModel alloc] init];
+    
+    @weakify(self);
+    
+    //绑定self.loginViewModel.phoneNumber -> self.phoneNumberTextField的输入
+    //通过程序赋值phoneNumberTextField = @"xxx"，不会触发phoneNumberTextField.rac_textSignal
+    RAC(self.loginViewModel , phoneNumber) = [RACSignal merge:@[RACObserve(self.phoneNumberTextField, text),self.phoneNumberTextField.rac_textSignal]];
+    
+    //绑定self.loginViewModel.password -> self.passwordTextField的输入
+    RAC(self.loginViewModel , password) = [RACSignal merge:@[RACObserve(self.passwordTextField, text),self.passwordTextField.rac_textSignal]];
+    
+    //绑定loginButton的enabled -> self.loginViewModel.validLoginSignal
+    RAC(self.loginButton, enabled) = self.loginViewModel.validLoginSignal;
+    
+    [RACObserve(self.loginButton, enabled) subscribeNext:^(id  _Nullable x) {
+        self.loginButton.backgroundColor = [x boolValue] ? [UIColor orangeColor] : [UIColor grayColor];
+    }];
+    
+    //action方法绑定
+    [[[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside]
+      doNext:^(id x) {
+//          @strongify(self);
+          NSLog(@"doNext");
+      }]
+     subscribeNext:^(UIButton *sender) {
+         @strongify(self);
+         NSLog(@"loginCommand");
+         [self.loginViewModel.loginCommand execute:nil];
+     }];
 }
 
 @end
