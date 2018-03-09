@@ -10,7 +10,7 @@
 #import "LoginViewModel.h"
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
-#import "MBProgressHUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "MainPageViewController.h"
 
 @interface LoginViewController ()
@@ -20,6 +20,10 @@
 @property (strong, nonatomic) UILabel *passwordLabel;
 @property (strong, nonatomic) UITextField *passwordTextField;
 @property (strong, nonatomic) UIButton *loginButton;
+@property (strong, nonatomic) UILabel *autoLoginLabel;
+@property (strong, nonatomic) UISwitch *autoLoginSwitch;
+@property (strong, nonatomic) UILabel *remenberAccountLabel;
+@property (strong, nonatomic) UISwitch *remenberAccountSwitch;
 @end
 
 @implementation LoginViewController
@@ -87,6 +91,38 @@
         loginButton;
     });
     
+    self.autoLoginLabel = ({
+        UILabel *autoLoginLabel = [[UILabel alloc] init];
+        autoLoginLabel.text = @"自动登录";
+        autoLoginLabel.textColor = [UIColor grayColor];
+        autoLoginLabel.font = [UIFont systemFontOfSize:14];
+        autoLoginLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:autoLoginLabel];
+        autoLoginLabel;
+    });
+    
+    self.autoLoginSwitch = ({
+        UISwitch *autoLoginSwitch = [[UISwitch alloc] init];
+        [self.view addSubview:autoLoginSwitch];
+        autoLoginSwitch;
+    });
+    
+    self.remenberAccountSwitch = ({
+        UISwitch *remenberAccountSwitch = [[UISwitch alloc] init];
+        [self.view addSubview:remenberAccountSwitch];
+        remenberAccountSwitch;
+    });
+    
+    self.remenberAccountLabel = ({
+        UILabel *remenberAccountLabel = [[UILabel alloc] init];
+        remenberAccountLabel.text = @"记住用户名";
+        remenberAccountLabel.textColor = [UIColor grayColor];
+        remenberAccountLabel.font = [UIFont systemFontOfSize:14];
+        remenberAccountLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:remenberAccountLabel];
+        remenberAccountLabel;
+    });
+    
     [self.phoneNumberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(100);
         make.centerX.equalTo(self.view);
@@ -111,9 +147,31 @@
         make.right.equalTo(self.passwordTextField.mas_left).offset(-10);
     }];
     
+    [self.remenberAccountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(20);
+        make.width.equalTo(@80);
+        make.top.equalTo(self.passwordTextField.mas_bottom).offset(40);
+    }];
+    
+    [self.remenberAccountSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.remenberAccountLabel.mas_right).offset(10);
+        make.centerY.equalTo(self.remenberAccountLabel);
+    }];
+    
+    [self.autoLoginLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.remenberAccountLabel);
+        make.top.equalTo(self.remenberAccountLabel.mas_bottom).offset(40);
+        make.width.equalTo(self.remenberAccountLabel);
+    }];
+    
+    [self.autoLoginSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.autoLoginLabel.mas_right).offset(10);
+        make.centerY.equalTo(self.autoLoginLabel);
+    }];
+    
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.phoneNumberTextField);
-        make.top.equalTo(self.passwordTextField.mas_bottom).offset(80);
+        make.top.equalTo(self.autoLoginLabel.mas_bottom).offset(80);
         make.centerX.equalTo(self.view);
         make.height.equalTo(@44);
     }];
@@ -153,7 +211,7 @@
 //         [self.loginViewModel.loginCommand execute:nil];
          
          @weakify(self);
-         [self.loginViewModel loginSuccess:^(id result) {
+         [self.loginViewModel loginWithSuccess:^(id result) {
              @strongify(self);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              NSLog(@"result:%@", result);

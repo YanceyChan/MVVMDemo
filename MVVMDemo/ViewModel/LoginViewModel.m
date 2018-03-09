@@ -65,7 +65,7 @@
     }];
 }
 
-- (void)loginSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock {
+- (void)loginWithSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock {
     if (self.phoneNumber.length < 11) {
         failureBlock([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"errorMsg":@"请输入正确的手机号码"}]);
         return;

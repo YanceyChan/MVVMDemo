@@ -22,5 +22,7 @@ typedef void(^failureBlock)(NSError *error);
 /// 登录按钮点击执行的命令
 @property (nonatomic, strong) RACCommand *loginCommand;
 
-- (void)loginSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock;
+
+//登录网络请求
+- (void)loginWithSuccess:(successBlock)successBlock failuer:(failureBlock)failureBlock;
 @end
