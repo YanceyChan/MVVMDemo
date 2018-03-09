@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewModel.h"
+#import "User.h"
 
 
 @implementation LoginViewModel
@@ -28,6 +29,9 @@
                                                reduce:^(NSString *phoneNubmer, NSString *password){
         return @(phoneNubmer.length > 0 && password.length >= 8);
     }] distinctUntilChanged];
+    
+    //处理switch逻辑
+    
     
     self.loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
