@@ -198,7 +198,12 @@
         self.loginButton.backgroundColor = [x boolValue] ? [UIColor orangeColor] : [UIColor grayColor];
     }];
     
-    RACChannelTo(self.loginViewModel, bRemenberAccount) = self.remenberAccountSwitch.rac_newOnChannel;
+//    RACChannelTo(self.loginViewModel, bRemenberAccount) = self.remenberAccountSwitch.rac_newOnChannel;
+    //上面价下面
+    RACChannelTerminal *channelA = RACChannelTo(self.loginViewModel, bRemenberAccount);
+    //双向绑定
+    [self.remenberAccountSwitch.rac_newOnChannel subscribe:channelA];
+    [channelA subscribe:self.remenberAccountSwitch.rac_newOnChannel];
     
     RACChannelTo(self.loginViewModel, bAutoLogin) = self.autoLoginSwitch.rac_newOnChannel;
 
