@@ -31,6 +31,21 @@
     }] distinctUntilChanged];
     
     //处理switch逻辑
+    [RACObserve(self, bRemenberAccount) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        BOOL a = [x boolValue];
+        if (!a) {
+            self.bAutoLogin = a;
+        }
+    }];
+    
+    [RACObserve(self, bAutoLogin) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        BOOL b = [x boolValue];
+        if (b) {
+            self.bRemenberAccount = b;
+        }
+    }];
     
     
     self.loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {

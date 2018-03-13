@@ -201,15 +201,6 @@
     RACChannelTo(self.loginViewModel, bRemenberAccount) = self.remenberAccountSwitch.rac_newOnChannel;
     
     RACChannelTo(self.loginViewModel, bAutoLogin) = self.autoLoginSwitch.rac_newOnChannel;
-    
-    RACChannelTerminal *t1 = self.remenberAccountSwitch.rac_newOnChannel;
-    RACChannelTerminal *t2 = self.autoLoginSwitch.rac_newOnChannel;
-    [[t1 map:^id(NSNumber *on) {
-        return @(![on boolValue]);
-    }] subscribe:t2];
-    [[t2 map:^id(NSNumber *on) {
-        return @(![on boolValue]);
-    }] subscribe:t1];
 
     //action方法绑定
     [[[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside]
