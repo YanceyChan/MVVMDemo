@@ -98,6 +98,10 @@ static NSString * const cellID = @"cellID";
                             @{
                                 @"title" : @"登录Demo",
                                 @"vc" : @"LoginViewController"
+                                },
+                            @{
+                                @"title" : @"TableView datasource+delegate分离",
+                                @"vc" : @"MainPageViewController"
                                 }
                             ];
     }
