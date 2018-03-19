@@ -22,7 +22,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     DelegateRedView *redView = [[DelegateRedView alloc] init];
-//    redView.delegate = self;
+    redView.delegate = self;
     [self.view addSubview:redView];
     [redView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@50);
@@ -36,6 +36,12 @@
         @strongify(self);
         [self.navigationController popViewControllerAnimated:YES];
     }];
+    
+//    [[self rac_signalForSelector:@selector(didClickRedView) fromProtocol:@protocol(DelegateRedViewDelegate) ] subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"clickView RAC fromProtocol \nx:%@", x);
+//        @strongify(self);
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }];
 }
 
 //#pragma mark DelegateRedViewDelegate

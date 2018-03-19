@@ -18,7 +18,6 @@
 @property (strong, nonatomic) NSArray *listTitleArray;
 @end
 
-
 static NSString * const cellID = @"cellID";
 
 @implementation MainViewController

@@ -30,9 +30,9 @@ static NSString * const testNotification = @"testNotification";
     }];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+//- (void)dealloc {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];

@@ -22,9 +22,11 @@
     self.person = [[Person alloc] init];
     self.person.name = @"Mike";
 //    [self.person addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
-    [[self.person rac_valuesForKeyPath:@"name" observer:self] subscribeNext:^(id  _Nullable x) {
-        NSLog(@"RAC:Name is changed! new = %@",x);
+    
+    [[self.person rac_valuesAndChangesForKeyPath:@"name" options:NSKeyValueObservingOptionNew observer:self] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"RAC:Name is changed! new = %@",x[0]);
     }];
+    
     self.person.name = @"Jack";
 }
 
