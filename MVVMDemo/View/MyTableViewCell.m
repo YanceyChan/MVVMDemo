@@ -28,6 +28,7 @@
 
 @implementation MyTableViewCell (ConfigureCell)
 - (void)configureCellWithModel:(MyModel *)myModel{
+    self.model = myModel;
     self.nameLabel.text = myModel.name;
     self.ageLabel.text = myModel.age;
     self.addressLabel.text = myModel.address;

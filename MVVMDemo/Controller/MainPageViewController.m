@@ -52,7 +52,12 @@ static NSString * const cellIdentifier = @"myCell";
     self.dataSoures = [[TableViewDataSource alloc]initWithItems:self.myModels cellIdentifier:cellIdentifier configureCellBlock:cellConfigureBlock];
     
     [[self.dataSoures rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)] subscribeNext:^(id  _Nullable x) {
-        NSLog(@"MainPageViewController:%@", x);
+        UITableView *tableView = x[0];
+        NSIndexPath *tableIndexPath = x[1];
+        MyTableViewCell *cell = [tableView cellForRowAtIndexPath:tableIndexPath];
+        MyModel *model = cell.model;
+        
+        NSLog(@"Selected Name:%@", model.name);
     }];
     
     self.myTabelView.dataSource = self.dataSoures;

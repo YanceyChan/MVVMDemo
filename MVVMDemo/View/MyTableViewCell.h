@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *idLabel;
-
+@property (strong, nonatomic) MyModel *model;
 @end
 
 //分类
