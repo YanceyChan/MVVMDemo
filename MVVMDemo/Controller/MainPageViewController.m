@@ -11,27 +11,61 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface MainPageViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "MyModel.h"
+#import "MyTableViewCell.h"
+#import "TableViewDataSource.h"
 
+@interface MainPageViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) UITableView *myTabelView;
+@property (strong, nonatomic) NSArray *myModels;
+@property (strong, nonatomic) TableViewDataSource *dataSoures;
 @end
+
+static NSString * const cellIdentifier = @"myCell";
 
 @implementation MainPageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createMyDataArray];
     [self setupUI];
+    
 }
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.myTabelView = ({
+        UITableView *tableView = [[UITableView alloc] init];
+        [self.view addSubview:tableView];
+        [tableView registerNib:[MyTableViewCell nib] forCellReuseIdentifier:cellIdentifier];
+        [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+        tableView;
+    });
+    
+    TableViewCellConfigureBlock cellConfigureBlock = ^(MyTableViewCell *cell, MyModel *item){
+        //将item应用到cell上的方法
+        [cell configureCellWithModel:item];
+    };
+    self.dataSoures = [[TableViewDataSource alloc]initWithItems:self.myModels cellIdentifier:cellIdentifier configureCellBlock:cellConfigureBlock];
+    
+    [[self.dataSoures rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"MainPageViewController:%@", x);
+    }];
+    
+    self.myTabelView.dataSource = self.dataSoures;
+    self.myTabelView.delegate = self.dataSoures;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+- (void)createMyDataArray{
+    MyModel *jack = [[MyModel alloc]initWithName:@"jack" Age:@"20" Address:@"southStree 17" Identifier:@"1"];
+    MyModel *jone = [[MyModel alloc]initWithName:@"jone" Age:@"21" Address:@"north 18" Identifier:@"2"];
+    MyModel *may = [[MyModel alloc]initWithName:@"may" Age:@"19" Address:@"westStree 20" Identifier:@"3"];
+    MyModel *tony = [[MyModel alloc]initWithName:@"tony" Age:@"18" Address:@"eastStreet" Identifier:@"4"];
+    MyModel *marry = [[MyModel alloc]initWithName:@"marry" Age:@"20" Address:@"nononStreet" Identifier:@"5"];
+    self.myModels = @[jack, jone, may, tony, marry];
 }
 
 @end

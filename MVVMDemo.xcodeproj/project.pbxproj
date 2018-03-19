@@ -25,6 +25,10 @@
 		5D618450204E7FB00083743C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D61844F204E7FB00083743C /* Person.m */; };
 		5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D618452204E821E0083743C /* ControllerEventDemoViewController.m */; };
 		5D6CAF57205117A70013D2FB /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CAF56205117A70013D2FB /* MainPageViewController.m */; };
+		5D9A7EFF205FB14C00903B83 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A7EFD205FB14C00903B83 /* TableViewDataSource.m */; };
+		5D9A7F02205FB1C400903B83 /* MyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A7F01205FB1C400903B83 /* MyModel.m */; };
+		5D9A7F06205FB1DB00903B83 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9A7F03205FB1DB00903B83 /* MyTableViewCell.m */; };
+		5D9A7F07205FB1DB00903B83 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D9A7F04205FB1DB00903B83 /* MyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,13 @@
 		5D618452204E821E0083743C /* ControllerEventDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControllerEventDemoViewController.m; sourceTree = "<group>"; };
 		5D6CAF55205117A70013D2FB /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		5D6CAF56205117A70013D2FB /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
+		5D9A7EFD205FB14C00903B83 /* TableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewDataSource.m; sourceTree = "<group>"; };
+		5D9A7EFE205FB14C00903B83 /* TableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
+		5D9A7F00205FB1C400903B83 /* MyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyModel.h; sourceTree = "<group>"; };
+		5D9A7F01205FB1C400903B83 /* MyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyModel.m; sourceTree = "<group>"; };
+		5D9A7F03205FB1DB00903B83 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		5D9A7F04205FB1DB00903B83 /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		5D9A7F05205FB1DB00903B83 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		BB0E3044003FDF48089C7BE9 /* Pods-MVVMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF009B83695C6B4C3F8AD56 /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE40A3419A4793773356722 /* Pods-MVVMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +191,8 @@
 		5D618440204E43300083743C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5D9A7EFE205FB14C00903B83 /* TableViewDataSource.h */,
+				5D9A7EFD205FB14C00903B83 /* TableViewDataSource.m */,
 				5D618403204E2ECF0083743C /* MainViewController.h */,
 				5D618404204E2ECF0083743C /* MainViewController.m */,
 				5D618444204E55000083743C /* DelegateDemoViewController.h */,
@@ -199,6 +212,8 @@
 		5D618441204E43370083743C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5D9A7F00205FB1C400903B83 /* MyModel.h */,
+				5D9A7F01205FB1C400903B83 /* MyModel.m */,
 				5D61844E204E7FB00083743C /* Person.h */,
 				5D61844F204E7FB00083743C /* Person.m */,
 				5D60D442204FBB7B00668427 /* User.h */,
@@ -210,6 +225,9 @@
 		5D618442204E433B0083743C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D9A7F05205FB1DB00903B83 /* MyTableViewCell.h */,
+				5D9A7F03205FB1DB00903B83 /* MyTableViewCell.m */,
+				5D9A7F04205FB1DB00903B83 /* MyTableViewCell.xib */,
 				5D618447204E69B40083743C /* DelegateRedView.h */,
 				5D618448204E69B40083743C /* DelegateRedView.m */,
 			);
@@ -343,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D61840D204E2ECF0083743C /* LaunchScreen.storyboard in Resources */,
+				5D9A7F07205FB1DB00903B83 /* MyTableViewCell.xib in Resources */,
 				5D61840A204E2ECF0083743C /* Assets.xcassets in Resources */,
 				5D618408204E2ECF0083743C /* Main.storyboard in Resources */,
 			);
@@ -430,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D60D444204FBB7B00668427 /* User.m in Sources */,
+				5D9A7F02205FB1C400903B83 /* MyModel.m in Sources */,
 				5D618453204E821E0083743C /* ControllerEventDemoViewController.m in Sources */,
 				5D60D447204FBB8C00668427 /* LoginViewModel.m in Sources */,
 				5D618405204E2ECF0083743C /* MainViewController.m in Sources */,
@@ -437,10 +457,12 @@
 				5D618450204E7FB00083743C /* Person.m in Sources */,
 				5D61844C204E7F1E0083743C /* KVODemoViewController.m in Sources */,
 				5D60D441204FBB6200668427 /* LoginViewController.m in Sources */,
+				5D9A7F06205FB1DB00903B83 /* MyTableViewCell.m in Sources */,
 				5D6CAF57205117A70013D2FB /* MainPageViewController.m in Sources */,
 				5D618410204E2ECF0083743C /* main.m in Sources */,
 				5D618446204E55000083743C /* DelegateDemoViewController.m in Sources */,
 				5D618402204E2ECF0083743C /* AppDelegate.m in Sources */,
+				5D9A7EFF205FB14C00903B83 /* TableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
