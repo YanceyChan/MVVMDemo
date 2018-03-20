@@ -51,12 +51,11 @@ static NSString * const cellIdentifier = @"myCell";
     };
     self.dataSoures = [[TableViewDataSource alloc]initWithItems:self.myModels cellIdentifier:cellIdentifier configureCellBlock:cellConfigureBlock];
     
+    @weakify(self);
     [[self.dataSoures rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)] subscribeNext:^(id  _Nullable x) {
-        UITableView *tableView = x[0];
+        @strongify(self);
         NSIndexPath *tableIndexPath = x[1];
-        MyTableViewCell *cell = [tableView cellForRowAtIndexPath:tableIndexPath];
-        MyModel *model = cell.model;
-        
+        MyModel *model = [self.dataSoures itemAtIndexPath:tableIndexPath];
         NSLog(@"Selected Name:%@", model.name);
     }];
     
